@@ -8,5 +8,9 @@
     "start": "node src/index.js"
   },
   "author": "Osmar Junio",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.18.0"
+  }
 }
