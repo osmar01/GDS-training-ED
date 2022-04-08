@@ -1,5 +1,5 @@
 const configDatabase = {
-    database: 'testeeldorado',
+    database: 'bancogds',
     username: 'root',
     password: 'root',
     dialect: 'mysql',
