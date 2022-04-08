@@ -19,6 +19,6 @@ Install the dependencies and start the server.
 
 ```sh
 cd backend
-npm run create-datase
+npm run create-database
 npm start
 ```
