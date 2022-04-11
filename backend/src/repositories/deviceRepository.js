@@ -1,8 +1,10 @@
 const Device = require('../database/models/device');
+const Category = require('../database/models/category');
+
 
 class DeviceRepository {
 
-  async save(device) {
+  async add(device) {
     try {
       return await Device.create(device);
 
@@ -13,10 +15,10 @@ class DeviceRepository {
 
   async listAll() {
     try {
-      return await Device.findAll();
+      return await Device.findAll({ include: [ { model: Category } ] });
 
     } catch (error) {
-      console.log('Error listAll device');
+      console.log('Error list all devices' + error);
     }
   }
 

@@ -7,42 +7,33 @@ const Device = database.define('devices', {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     primaryKey: true,
-    field: 'id'
   },
+
   name: {
     type: Sequelize.STRING(100),
     allowNull: false,
-    field: 'name'
   },
+
   category_id: {
     type: Sequelize.INTEGER,
     allowNull: false,
-    references: {
-      model: 'category',
-      key: 'id'
-    }
   },
+
   color: {
     type: Sequelize.STRING(16),
     allowNull: false,
-    field: 'color'
   },
+  
   partNumber: {
     type: Sequelize.INTEGER,
     allowNull: false,
-    field: 'part_number'
   },
 
-},
-  { 
-    timestamps: false,
-    tableName: 'Devices'
-  }
-)
+}, { timestamps: false })
 
 Device.belongsTo(Category, 
   {
-    constraints: true
+    foreignKey: 'category_id'
   });
 
 module.exports = Device

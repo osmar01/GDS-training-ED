@@ -7,7 +7,7 @@ class CategoryRepository {
       return await Category.create(category);
 
     } catch (error) {
-      console.log('Error save category');
+      console.log('Error create category');
     }
   }
 
@@ -16,7 +16,7 @@ class CategoryRepository {
       return await Category.findAll();
 
     } catch (error) {
-      console.log('Error listAll category');
+      console.log('Error list All category');
     }
   }
 

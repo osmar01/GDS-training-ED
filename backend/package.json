@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "create-database": "npx sequelize-cli db:create && npx sequelize-cli db:migrate",
+    "create-database": "npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "migrate": "npx sequelize-cli db:migrate",
     "migrate-revert": "npx sequelize-cli db:migrate:undo",
+    "seed": "npx sequelize-cli db:seed:all",
+    "seed-revert": "npx sequelize-cli db:seed:undo",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Osmar Junio",
