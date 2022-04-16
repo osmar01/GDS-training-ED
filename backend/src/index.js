@@ -1,26 +1,32 @@
+const express = require('express');
+// const DeviceRepository = require('./repositories/deviceRepository');
+// const CategoryRepository = require('./repositories/CategoryRepository');
+
+// async function main() {
+
+//   const deviceRepository = new DeviceRepository();
+
+//   const devices = await deviceRepository.listAll();
+//   console.log(devices);
 
 
-const DeviceRepository = require('./repositories/deviceRepository');
-const CategoryRepository = require('./repositories/CategoryRepository');
+// }
 
+// main();
 
-async function main() {
+const app = express();
+app.use(express.json());
 
-  const deviceRepository = new DeviceRepository();
+app.get('/devices', (request, response) => {
+  return response.json({
+    devices: [
+      { name: 'aparelho 1', color: 'azul' },
+      { name: 'aparelho 2', color: 'branco' },
+      { name: 'aparelho 3', color: 'verde' },
+    ]
+  });
+});
 
-  // const { id } = await  deviceRepository.add(
-  //   {
-  //     name: 'aparelho5',
-  //     category_id: 1,
-  //     color: 'branco',
-  //     partNumber: 2020
-  //   }
-  // );
-
-  const devices = await deviceRepository.listAll();
-  console.log(devices);
-
-
-}
-
-main();
+app.listen(3333, () => {
+  console.log('server run');
+});

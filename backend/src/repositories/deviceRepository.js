@@ -9,24 +9,38 @@ class DeviceRepository {
       return await Device.create(device);
 
     } catch (error) {
-      console.log('Error save device');
+      console.log('Error save device' + error);
     }
   }
 
-  async listAll() {
-    try {
-      return await Device.findAll({ include: [ { model: Category } ] });
-
-    } catch (error) {
-      console.log('Error list all devices' + error);
-    }
-  }
-
-  async filter(filter) {
+  async getById(deviceId) {
     try {
       return await Device.findAll(
-        { where: filter }
+        {
+          where: {
+            id: deviceId
+          }
+        }
       );
+
+    } catch (error) {
+      console.log('Error id device' + error);
+    }
+  }
+
+  async filter(filterName) {
+    try {
+      if (filterName) {
+        return await Device.findAll(
+          {
+            where: {
+              name: filterName
+            }
+          }
+        );
+      } else {
+        return await Device.findAll({ include: [{ model: Category }] })
+      }
     } catch (error) {
       console.log('Error filter device');
     }

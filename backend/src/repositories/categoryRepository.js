@@ -20,13 +20,34 @@ class CategoryRepository {
     }
   }
 
-  async filter(filter) {
+  async filter(filterName) {
     try {
-      return await Category.findAll(
-        { where: filter }
-      );
+      if (filterName) {
+        return await Category.findAll(
+          {
+            where: {
+              name: filterName
+            }
+          }
+        );
+      } else {
+        return await Category.findAll();
+      }
     } catch (error) {
       console.log('Error filter category');
+    }
+  }
+  async getById(id) {
+    try {
+      return await Category.findAll(
+        {
+          where: {
+            id: id
+          }
+        }
+      );
+    } catch (error) {
+      console.log('Error id category');
     }
   }
 
@@ -42,7 +63,10 @@ class CategoryRepository {
   async delete(id) {
     try {
       return await Category.destroy(
-        { where: id }
+        {
+          where:
+            { id: id }
+        }
       );
     } catch (error) {
       console.log('Error delete category');
