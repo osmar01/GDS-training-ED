@@ -1,0 +1,11 @@
+<div class="box shadow-1">
+  <p-menubar [model]="items">
+    <ng-template pTemplate="start" height="40" class="mr-2">
+      <p-image src="assets/logo.jpg" width="100"></p-image>
+    </ng-template>
+    <ng-template pTemplate="end" height="40" class="mr-2">
+      <p-splitButton label="Name_User" [model]="this.items" styleClass="p-button-text p-button-info mr-2 mb-2"></p-splitButton>
+      
+    </ng-template>
+  </p-menubar>
+</div>
