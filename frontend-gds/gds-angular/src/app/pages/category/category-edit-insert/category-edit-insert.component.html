@@ -1,1 +1,29 @@
-<p>category-edit-insert works!</p>
+
+
+<div class="grid pt-5 pb-5  height">
+    <div class="col-6 col-offset-3 p-fluid box shadow-4 border-round p-4">
+      <div>
+        New Category
+      </div>
+  
+      <p-divider> </p-divider>
+  
+      <form [formGroup]="form">
+        <div class="grid p-fluid">
+  
+          <div class="col-12 mb-8">
+            <span class="p-float-label">
+              <input formControlName="name" id="name" type="text" pInputText>
+              <label for="name">Name</label>
+            </span>
+          </div>
+  
+          <div class="col-6 col-offset-3">
+            <p-button label="Save" [loading]="loading" (onClick)="login(true)"></p-button>
+          </div>
+        </div>
+      </form>
+  
+  
+    </div>
+  </div>

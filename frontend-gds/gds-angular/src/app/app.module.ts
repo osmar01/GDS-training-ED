@@ -1,3 +1,5 @@
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth-guard';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,6 +22,8 @@ import { DeviceEditInsertComponent } from './pages/device/device-edit-insert/dev
 import { DeviceListComponent } from './pages/device/device-list/device-list.component';
 import { CategoryEditInsertComponent } from './pages/category/category-edit-insert/category-edit-insert.component';
 import { CategoryListComponent } from './pages/category/category-list/category-list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DividerModule } from 'primeng/divider';
 
 
 @NgModule({
@@ -37,6 +41,8 @@ import { CategoryListComponent } from './pages/category/category-list/category-l
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     MenubarModule,
     MenuModule,
     ImageModule,
@@ -44,9 +50,10 @@ import { CategoryListComponent } from './pages/category/category-list/category-l
     SplitButtonModule,
     CardModule,
     InputTextModule,
-    PasswordModule
+    PasswordModule,
+    DividerModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

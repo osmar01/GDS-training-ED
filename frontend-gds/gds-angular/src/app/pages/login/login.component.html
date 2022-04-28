@@ -1,5 +1,6 @@
 <div class="flex justify-content-center align-items-center w-full h-full">
 
+  <form (keyup.enter)="login(3)"></form>
   <p-card header="Devices" subheader="Manager" [style]="{width: '360px'}" styleClass="p-card-shadow">
     <ng-template pTemplate="header">
       <img alt="Card" src="assets/logo-home.png">
@@ -8,7 +9,7 @@
     <div class="grid p-fluid">
       <div class="col-12 mb-3">
         <span class="p-float-label">
-          <input id="float-input" type="text" pInputText>
+          <input [formControl]="userField" id="float-input" type="text" pInputText>
           <label for="float-input">Username</label>
         </span>
 
@@ -16,7 +17,7 @@
 
       <div class="col-12">
         <span class="p-float-label ">
-          <p-password [feedback]="false" id="float-pass"></p-password>
+          <p-password [formControl]="password" [feedback]="false" id="float-pass"></p-password>
           <label for="float-pass">Password</label>
         </span>
       </div>
@@ -25,7 +26,7 @@
     <ng-template pTemplate="footer">
       <div class="grid p-fluid">
         <div class="col-12 mb-3">
-          <p-button label="Login" [loading]="loading[3]" (onClick)="load(3)"></p-button>
+          <p-button label="Login" [loading]="loading[3]" (onClick)="login(3)"></p-button>
         </div>
       </div>
 

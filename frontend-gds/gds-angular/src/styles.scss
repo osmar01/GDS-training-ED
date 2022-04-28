@@ -4,12 +4,18 @@ html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  height: 99%;
   box-sizing: border-box;
   background-color: #f2f2f2 !important;
   font-family: Verdana, Tahoma, sans-serif !important;
 }
 
-p-menubar > .p-menubar{
+.grid {
+  margin-right: 0;
+  margin-left: 0;
+  margin-top: 0;
+}
+
+p-menubar > .p-menubar {
   border-radius: 0;
 }

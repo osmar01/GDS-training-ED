@@ -1,7 +1,4 @@
-<div class="min-w-full h-full">
-  <!-- <app-menu-bar></app-menu-bar> -->
-  <router-outlet></router-outlet>
-  <!-- <div class="grid pt-5 pb-5 h-auto">
-    <div class="col-8 col-offset-2  box shadow-4 border-round ">8</div>
-  </div> -->
+<div class="w-full h-full">
+  <app-login *ngIf="!showSideNavToolbar"></app-login>
+  <app-menu-bar *ngIf="showSideNavToolbar" ></app-menu-bar>
 </div>

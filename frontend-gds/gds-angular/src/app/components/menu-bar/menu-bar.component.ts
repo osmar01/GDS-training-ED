@@ -40,6 +40,7 @@ export class MenuBarComponent implements OnInit {
       {
         label: 'Home',
         icon: 'pi pi-fw pi-home',
+        routerLink: 'home'
       },
       {
         label: 'Devices',
@@ -48,10 +49,12 @@ export class MenuBarComponent implements OnInit {
           {
             label: 'List',
             icon: 'pi pi-fw pi-list',
+            routerLink: '/device'
           },
           {
             label: 'New',
             icon: 'pi pi-fw pi-plus',
+            routerLink: '/device-create'
           }
         ]
       },
@@ -62,10 +65,12 @@ export class MenuBarComponent implements OnInit {
           {
             label: 'List',
             icon: 'pi pi-fw pi-list',
+            routerLink: '/category'
           },
           {
             label: 'New',
             icon: 'pi pi-fw pi-plus',
+            routerLink: '/category-create'
           }
         ]
       },
