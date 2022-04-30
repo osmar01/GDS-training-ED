@@ -1,5 +1,5 @@
 
-export class category {
+export class Category {
 
   id: number | undefined;
   name: string | undefined;

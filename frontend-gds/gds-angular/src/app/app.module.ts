@@ -1,11 +1,12 @@
-import { AuthService } from './services/auth.service';
-import { AuthGuard } from './guards/auth-guard';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// -- --------primeng
 import { MenubarModule } from 'primeng/menubar';
 import { MenuModule } from 'primeng/menu';
 import { ImageModule } from 'primeng/image';
@@ -14,7 +15,13 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
-
+import { PanelModule } from 'primeng/panel';
+import { DividerModule } from 'primeng/divider';
+import { TableModule } from 'primeng/table';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { MessagesModule } from 'primeng/messages';
+import { ToastModule } from 'primeng/toast';
+// -- ---------my components
 import { HomeComponent } from './pages/home/home.component';
 import { MenuBarComponent } from './components/menu-bar/menu-bar.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -22,9 +29,10 @@ import { DeviceEditInsertComponent } from './pages/device/device-edit-insert/dev
 import { DeviceListComponent } from './pages/device/device-list/device-list.component';
 import { CategoryEditInsertComponent } from './pages/category/category-edit-insert/category-edit-insert.component';
 import { CategoryListComponent } from './pages/category/category-list/category-list.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DividerModule } from 'primeng/divider';
 
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth-guard';
+import { CategoryService } from './services/category.service';
 
 @NgModule({
   declarations: [
@@ -41,6 +49,7 @@ import { DividerModule } from 'primeng/divider';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     MenubarModule,
@@ -51,9 +60,20 @@ import { DividerModule } from 'primeng/divider';
     CardModule,
     InputTextModule,
     PasswordModule,
-    DividerModule
+    DividerModule,
+    PanelModule,
+    TableModule,
+    ConfirmDialogModule,
+    MessagesModule,
+    ToastModule,
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [
+    AuthService,
+    AuthGuard,
+    CategoryService,
+    ConfirmationService,
+    // MessageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

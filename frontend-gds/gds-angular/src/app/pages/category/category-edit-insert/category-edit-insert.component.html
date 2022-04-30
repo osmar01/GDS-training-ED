@@ -1,6 +1,6 @@
 
 
-<div class="grid pt-5 pb-5  height">
+<div class="grid pt-5 pb-5 height">
     <div class="col-6 col-offset-3 p-fluid box shadow-4 border-round p-4">
       <div>
         New Category
@@ -19,11 +19,16 @@
           </div>
   
           <div class="col-6 col-offset-3">
-            <p-button label="Save" [loading]="loading" (onClick)="login(true)"></p-button>
+            <p-button label="Save" [loading]="loading" (onClick)="insert()"></p-button>
           </div>
+
         </div>
       </form>
-  
-  
+
     </div>
   </div>
+
+  <div class="col-6 col-offset-3 pt-5 pb-5">
+    <p-messages [(value)]="msgs"></p-messages>
+  </div>
+  

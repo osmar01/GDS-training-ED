@@ -1,12 +1,4 @@
 .height {
-  height: 40%;
-}
-
-form {
-  margin: 16px 0;
-}
-
-:host ::ng-deep p-button > .p-button {
-  background: #3FBF3F !important;
-  border: 1px solid #3FBF3F;
+    max-height: 90%;
+    overflow-x: auto;
 }

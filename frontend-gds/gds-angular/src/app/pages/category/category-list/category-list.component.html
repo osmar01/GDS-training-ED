@@ -1,3 +1,38 @@
-<div class="grid pt-5 pb-5 h-auto">
-  <div class="col-8 col-offset-2  box shadow-4 border-round ">8</div>
+<div class="grid pt-5 height pb-5">
+  <div class="col-8 col-offset-2 box height shadow-4 border-round ">
+
+    <p-table #dt1 [globalFilterFields]="['name']" [value]="categories" [scrollable]="true" responsiveLayout="scroll" scrollHeight="450px">
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          Categories
+          <span class="p-input-icon-left ml-auto">
+              <i class="pi pi-search"></i>
+              <input pInputText type="text" (input)="applyFilterGlobal($event, 'contains')" placeholder="Search keyword" />
+          </span>
+      </div>
+      </ng-template>
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th>Name
+          </th>
+          <th>Action </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-category>
+        <tr>
+          <td>{{ category.name}}</td>
+          <td>
+            <button pButton pRipple (click)="confirmDelete(category.id)" icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
+          </td>          
+        </tr>
+      </ng-template>
+    </p-table>
+    <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text">
+    </p-confirmDialog>
+    
+  </div>
+  <div class="col-8 col-offset-2">
+    <p-messages [(value)]="msgs"></p-messages>
+  </div>
 </div>
+

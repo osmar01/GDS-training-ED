@@ -10,7 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: "home", pathMatch: "full" },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent},
   { path: 'device', component: DeviceListComponent },
   { path: 'device-create', component: DeviceEditInsertComponent },
   { path: 'category', component: CategoryListComponent },
