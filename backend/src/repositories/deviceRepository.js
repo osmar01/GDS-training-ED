@@ -42,7 +42,7 @@ class DeviceRepository {
         return await Device.findAll({ include: [{ model: Category }] })
       }
     } catch (error) {
-      console.log('Error filter device');
+      console.log('Error filter device: ' + error);
     }
   }
 
@@ -58,10 +58,13 @@ class DeviceRepository {
   async delete(id) {
     try {
       return await Device.destroy(
-        { where: id }
+        {
+          where:
+            { id: id }
+        }
       );
     } catch (error) {
-      console.log('Error delete device');
+      console.log('Error delete device: ' + error);
     }
   }
 }

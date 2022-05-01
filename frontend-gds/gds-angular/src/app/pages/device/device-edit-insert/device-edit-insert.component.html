@@ -1,1 +1,63 @@
-<p>device-edit-insert works!</p>
+<div class="grid pt-5 pb-5 height">
+  <div class="col-6 col-offset-3 p-fluid box shadow-4 border-round p-4">
+    <div>
+      New Device
+    </div>
+
+    <p-divider> </p-divider>
+
+    <form [formGroup]="form">
+      <div class="grid p-fluid">
+
+        <div class="col-12 mb-3">
+          <span class="p-float-label">
+            <input formControlName="name" id="nameDevice" type="text" pInputText>
+            <label for="nameDevice">Name</label>
+          </span>
+        </div>
+
+        <div class="col-12 mb-3">
+          <p-dropdown [options]="categories" formControlName="categoryId"
+            optionLabel="name" [filter]="true" filterBy="name" placeholder="Select a Country">
+
+            <ng-template pTemplate="selectedItem">
+              <div *ngIf="this.form.get('categoryId')">
+                <div>{{ (this.form.get('categoryId')?.value).name }}</div>
+              </div>
+            </ng-template>
+
+            <ng-template let-category pTemplate="item" >
+              <div class="country-item">
+                <div>{{category.name}}</div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+        </div>
+
+        <div class="col-12 mb-3">
+          <span class="p-float-label">
+            <input formControlName="color" id="color" type="text" pInputText>
+            <label for="color">Color</label>
+          </span>
+        </div>
+
+        <div class="col-12 mb-3">
+          <span class="p-float-label">
+            <input formControlName="partNumber" id="partNumber" type="text" pInputText>
+            <label for="partNumber">Part Number</label>
+          </span>
+        </div>
+
+        <div class="col-6 col-offset-3">
+          <p-button label="Save" [loading]="loading" (onClick)="insert()"></p-button>
+        </div>
+
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<div class="col-6 col-offset-3 pt-5 pb-5">
+  <p-messages [(value)]="msgs"></p-messages>
+</div>

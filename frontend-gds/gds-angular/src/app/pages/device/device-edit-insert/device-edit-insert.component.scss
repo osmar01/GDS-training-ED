@@ -1,0 +1,16 @@
+
+form {
+  margin: 16px 0;
+}
+
+:host ::ng-deep p-button > .p-button {
+  background: #3fbf3f !important;
+  border: 1px solid #3fbf3f;
+}
+:host ::ng-deep p-button > .p-button:hover {
+  border: 1px solid #3fbf3f;
+}
+
+:host ::ng-deep .p-dropdown {
+  width: 100%;
+}
