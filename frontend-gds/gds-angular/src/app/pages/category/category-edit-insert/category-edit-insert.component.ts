@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 })
 export class CategoryEditInsertComponent implements OnInit {
 
-    
+
   form: FormGroup = new FormGroup({});
   loading = false;
   category!: Category;
@@ -23,7 +23,7 @@ export class CategoryEditInsertComponent implements OnInit {
     private categoryService: CategoryService,
     private router: Router,
 
-  ) { 
+  ) {
     this.createForm();
   }
 
@@ -51,10 +51,16 @@ export class CategoryEditInsertComponent implements OnInit {
         this.loading = false;
         this.msgs = [{ severity: 'success', summary: 'Success', detail: 'OK' }]
         setTimeout(() => {
-          this.router.navigate(['category']); 
+          this.router.navigate(['category']);
         }, 1500);
 
       }
     );
+  }
+
+  onSubmit(form: any): void {
+    if (form.valid) {
+      this.insert();
+    }
   }
 }

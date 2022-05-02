@@ -12,12 +12,16 @@ export class AppComponent{
   title = 'gds-angular';
 
   showSideNavToolbar = false;
+  username!: string;
   
   constructor(
     private authService: AuthService,
   ){
     this.authService.showMenu.subscribe( data => {
       this.showSideNavToolbar = data;
+    });
+    this.authService.username.subscribe( data => {
+      this.username = data;
     });
   }
 

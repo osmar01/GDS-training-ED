@@ -6,19 +6,22 @@
 
     <p-divider> </p-divider>
 
-    <form [formGroup]="form">
+    <form [formGroup]="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
       <div class="grid p-fluid">
 
         <div class="col-12 mb-3">
           <span class="p-float-label">
-            <input formControlName="name" id="nameDevice" type="text" pInputText>
+            <input formControlName="name" required maxlength="128" id="nameDevice" type="text" pInputText>
             <label for="nameDevice">Name</label>
           </span>
+          <div *ngIf="!this.form.get('name')?.valid && this.form.get('name')?.touched">
+            <small id="username-help" class="p-error">Name is required.</small>
+          </div>
         </div>
 
         <div class="col-12 mb-3">
           <p-dropdown [options]="categories" formControlName="categoryId"
-            optionLabel="name" [filter]="true" filterBy="name" placeholder="Select a Country">
+            optionLabel="name" [filter]="true" filterBy="name" placeholder="Select a Category">
 
             <ng-template pTemplate="selectedItem">
               <div *ngIf="this.form.get('categoryId')">
@@ -32,24 +35,39 @@
               </div>
             </ng-template>
           </p-dropdown>
+          <div *ngIf="!this.form.get('categoryId')?.valid && this.form.get('categoryId')?.touched">
+            <small id="username-help" class="p-error">Category is required.</small>
+          </div>
         </div>
 
         <div class="col-12 mb-3">
           <span class="p-float-label">
-            <input formControlName="color" id="color" type="text" pInputText>
+            <input formControlName="color" required maxlength="16" id="color" type="text" pInputText>
             <label for="color">Color</label>
           </span>
+          <div *ngIf="!this.form.get('color')?.valid && this.form.get('color')?.touched">
+            <small id="username-help" class="p-error">Color is required.</small>
+          </div>
+          <div *ngIf="this.form.get('color')?.hasError('pattern')">
+            <small id="username-help" class="p-error">Only letters.</small>
+          </div>
         </div>
 
         <div class="col-12 mb-3">
           <span class="p-float-label">
-            <input formControlName="partNumber" id="partNumber" type="text" pInputText>
+            <input formControlName="partNumber" required maxlength="7" id="partNumber" type="text" pInputText>
             <label for="partNumber">Part Number</label>
           </span>
+          <div *ngIf="!this.form.get('partNumber')?.valid && this.form.get('partNumber')?.touched">
+            <small id="username-help" class="p-error">Part Number is required.</small>
+          </div>
+          <div *ngIf="this.form.get('partNumber')?.hasError('pattern')">
+            <small id="username-help" class="p-error">Only numbers.</small>
+          </div>
         </div>
 
         <div class="col-6 col-offset-3">
-          <p-button label="Save" [loading]="loading" (onClick)="insert()"></p-button>
+          <p-button type="submit" label="Save" [loading]="loading" [disabled]="!f.valid"></p-button>
         </div>
 
       </div>

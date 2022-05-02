@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { User } from './../../models/user';
+import { AuthService } from './../../services/auth.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -8,28 +10,31 @@ import { MenuItem } from 'primeng/api';
 })
 export class MenuBarComponent implements OnInit {
 
+  @Input() username!: string;
+
   itemsMenuBar: MenuItem[] = [];
   itemsMenuUser: MenuItem[] = [];
 
-  constructor() { }
-
+  constructor( private authService: AuthService ) { }
+  
 
   ngOnInit() {
     this.getItensMenuBar();
     this.getItensMenuUser();
   }
 
+  logout(): void {
+    this.authService.logout();
+  }
+
   getItensMenuUser(): void {
     this.itemsMenuUser = [
+
       {
-        label: 'Update', icon: 'pi pi-refresh', command: () => {}
-          // this.update();
-        },
-      {
-        label: 'Delete', icon: 'pi pi-times', command: () => {}
-          // this.delete();
-        },
-      { label: 'Angular.io', icon: 'pi pi-info', url: 'http://angular.io' },
+        label: 'Logout', icon: 'pi pi-times', command: () => {
+          this.logout();
+        }
+      },
       { separator: true },
       { label: 'Setup', icon: 'pi pi-cog', routerLink: ['/setup'] }
     ];

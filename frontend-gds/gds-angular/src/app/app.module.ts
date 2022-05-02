@@ -22,6 +22,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessagesModule } from 'primeng/messages';
 import { ToastModule } from 'primeng/toast';
 import { DropdownModule } from 'primeng/dropdown';
+import { MessageModule } from 'primeng/message';
+
 // -- ---------my components
 import { HomeComponent } from './pages/home/home.component';
 import { MenuBarComponent } from './components/menu-bar/menu-bar.component';
@@ -67,7 +69,8 @@ import { CategoryService } from './services/category.service';
     ConfirmDialogModule,
     MessagesModule,
     ToastModule,
-    DropdownModule
+    DropdownModule,
+    MessageModule
   ],
   providers: [
     AuthService,

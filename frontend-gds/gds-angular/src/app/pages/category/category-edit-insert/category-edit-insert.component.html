@@ -8,18 +8,21 @@
   
       <p-divider> </p-divider>
   
-      <form [formGroup]="form">
+      <form [formGroup]="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
         <div class="grid p-fluid">
   
           <div class="col-12 mb-8">
             <span class="p-float-label">
-              <input formControlName="name" id="name" type="text" pInputText>
+              <input formControlName="name" required id="name" type="text" pInputText>
               <label for="name">Name</label>
             </span>
+            <div *ngIf="!this.form.get('name')?.valid && this.form.get('name')?.touched">
+              <small id="username-help" class="p-error">Username is required.</small>
+            </div>
           </div>
   
           <div class="col-6 col-offset-3">
-            <p-button label="Save" [loading]="loading" (onClick)="insert()"></p-button>
+            <p-button type="submit" label="Save" [loading]="loading" [disabled]="!f.valid"></p-button>
           </div>
 
         </div>

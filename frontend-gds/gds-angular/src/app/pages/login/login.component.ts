@@ -46,9 +46,8 @@ export class LoginComponent implements OnInit {
     this.loading[index] = true;
     setTimeout(() => this.loading[index] = false, 1000);
     this.setUser();
-    console.log(this.user);
-    
     this.authService.authLogin(this.user);
+    this.authService.setUser(this.user);
   }
 
 }

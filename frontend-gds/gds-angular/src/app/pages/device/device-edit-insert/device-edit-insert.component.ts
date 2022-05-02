@@ -41,8 +41,8 @@ export class DeviceEditInsertComponent implements OnInit {
       {
         name: new FormControl('', Validators.required),
         categoryId: new FormControl('', Validators.required),
-        color: new FormControl('', Validators.required),
-        partNumber: new FormControl('', Validators.required),
+        color: new FormControl('',[ Validators.required, Validators.pattern('[A-Za-z]*')]),
+        partNumber: new FormControl('',  [Validators.required, Validators.pattern('[0-9]*')]),
       }
     )
   }
@@ -79,6 +79,11 @@ export class DeviceEditInsertComponent implements OnInit {
 
       }
     );
+  }
+  onSubmit(form: any): void {
+    if (form.valid) {
+      this.insert();
+    }
   }
 
 }
