@@ -1,7 +1,8 @@
 
 
-const ResponseBuilder = require('../utils/ResponseBuilder');
 const DeviceRepository = require('../repositories/deviceRepository');
+const { createResponseContent, createResponseErrors } = require('../utils/responseBuilder')
+
 
 
 
@@ -28,11 +29,11 @@ class DeviceController {
         }
       })
 
-      const responseContent = ResponseBuilder.createResponseContent(devicesLinks)
+      const responseContent = createResponseContent(devicesLinks)
 
       return response.status(200).json(responseContent)
     } catch (error) {
-      const responseErrors = ResponseBuilder.createResponseErrors([error.message])
+      const responseErrors = createResponseErrors([error.message])
 
       return response.status(400).json(responseErrors)
     }
@@ -64,12 +65,12 @@ class DeviceController {
         }
       })
 
-      const responseContent = ResponseBuilder.createResponseContent(deviceLinks)
+      const responseContent = createResponseContent(deviceLinks)
       return response.status(200).json(responseContent)
 
     } catch (error) {
 
-      const responseErrors = ResponseBuilder.createResponseErrors([error.message])
+      const responseErrors = createResponseErrors([error.message])
       return response.status(400).json(responseErrors)
     }
   }
@@ -85,12 +86,12 @@ class DeviceController {
 
       console.log(deviceResponse);
       
-      const responseContent = ResponseBuilder.createResponseContent(deviceResponse)
+      const responseContent = createResponseContent(deviceResponse)
       return response.status(201).json(responseContent)
 
     } catch (error) {
 
-      const responseErrors = ResponseBuilder.createResponseErrors([error.message])
+      const responseErrors = createResponseErrors([error.message])
       return response.status(400).json(responseErrors)
     }
   }
@@ -105,12 +106,12 @@ class DeviceController {
 
       const deviceResponse = await deviceRepository.delete(parseInt(categoryId));
 
-      const responseContent = ResponseBuilder.createResponseContent(deviceResponse)
+      const responseContent = createResponseContent(deviceResponse)
       return response.status(202).json(responseContent)
 
     } catch (error) {
 
-      const responseErrors = ResponseBuilder.createResponseErrors([error.message])
+      const responseErrors = createResponseErrors([error.message])
       return response.status(400).json(responseErrors)
     }
   }
