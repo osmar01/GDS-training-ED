@@ -1,8 +1,6 @@
 
-const ResponseBuilder = require('../utils/ResponseBuilder');
-const CategoryRepository = require('../repositories/categoryRepository');
-
-
+const { ResponseBuilder } = require('../utils/ResponseBuilder');
+const { createResponseContent, createResponseErrors } = require('../utils/responseBuilder')
 
 class CategoryController {
   
@@ -27,11 +25,11 @@ class CategoryController {
         }
       })
 
-      const responseContent = ResponseBuilder.createResponseContent(categoriesLinks)
+      const responseContent = createResponseContent(categoriesLinks)
       
       return response.status(200).json(responseContent)
     } catch (error) {
-      const responseErrors = ResponseBuilder.createResponseErrors([error.message])
+      const responseErrors = createResponseErrors([error.message])
 
       return response.status(400).json(responseErrors)
     }
@@ -63,12 +61,12 @@ class CategoryController {
         }
       })
       
-      const responseContent = ResponseBuilder.createResponseContent(categoryLinks)
+      const responseContent = createResponseContent(categoryLinks)
       return response.status(200).json(responseContent)
 
     } catch (error) {
       
-      const responseErrors = ResponseBuilder.createResponseErrors([error.message])
+      const responseErrors = createResponseErrors([error.message])
       return response.status(400).json(responseErrors)
     }
   }
@@ -81,12 +79,12 @@ class CategoryController {
 
       const categoryResponse = await categoryRepository.save(category);
 
-      const responseContent = ResponseBuilder.createResponseContent(categoryResponse)
+      const responseContent = createResponseContent(categoryResponse)
       return response.status(201).json(responseContent)
 
     } catch (error) {
 
-      const responseErrors = ResponseBuilder.createResponseErrors([error.message])
+      const responseErrors = createResponseErrors([error.message])
       return response.status(400).json(responseErrors)
     }
   }
@@ -101,12 +99,12 @@ class CategoryController {
 
       const categoryResponse = await categoryRepository.delete(parseInt(categoryId));
 
-      const responseContent = ResponseBuilder.createResponseContent(categoryResponse)
+      const responseContent = createResponseContent(categoryResponse)
       return response.status(202).json(responseContent)
 
     } catch (error) {
 
-      const responseErrors = ResponseBuilder.createResponseErrors([error.message])
+      const responseErrors = createResponseErrors([error.message])
       return response.status(400).json(responseErrors)
     }
   }
