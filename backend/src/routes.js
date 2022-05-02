@@ -1,5 +1,5 @@
 const CategoryRoutes = require('./routes/categoryRoutes.js')
-const DeviceRoutes = require('./routes/DeviceRoutes')
+const DeviceRoutes = require('./routes/deviceRoutes.js')
 
 const registerRoutes = app => {
   app.use('/category', CategoryRoutes);
