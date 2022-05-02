@@ -1,5 +1,6 @@
 
-const { ResponseBuilder } = require('../utils/ResponseBuilder');
+// const ResponseBuilder  = require('../utils/ResponseBuilder');
+const CategoryRepository = require('../repositories/categoryRepository');
 const { createResponseContent, createResponseErrors } = require('../utils/responseBuilder')
 
 class CategoryController {
@@ -111,4 +112,4 @@ class CategoryController {
 
 }
 
-module.exports = CategoryController
+module.exports = new CategoryController()
