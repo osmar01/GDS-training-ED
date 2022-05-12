@@ -34,7 +34,7 @@ class CategoryRepository {
         return await Category.findAll();
       }
     } catch (error) {
-      console.log('Error filter category');
+      console.log('Error filter category:'+ error);
     }
   }
   async getById(id) {
